@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <div class="d-flex justify-content-end input-group">
+        <input class="form-control" [(ngModel)]="query" (keydown.enter)="search()" />
+        <button class="btn btn-outline-secondary" (click)="search()">Поиск</button>
+    </div>
+    <div class="row">
+        <div class="card col-4" *ngFor="let product of products">
+            <div class="card-body">
+                <div class="position-absolute fs-5 bottom-0 end-0 m-3"><a routerLink="/products/{{product.id}}"><i class="bi bi-pencil-square"></i></a></div>
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p class="text-end fs-4">Цена: <span class="fw-bold">{{product.price}}</span></p>
+                <button *ngIf="getAmountOfProductOrder(product.id) === 0" class="btn btn-primary" (click)="addToOrder(product)">Добавить в заказ</button>
+                <ng-container *ngIf="getAmountOfProductOrder(product.id) > 0">
+                    <button class="fs-6 btn btn-primary" (click)="decrementOrder(product.id)"><i class="bi bi-dash-lg"></i></button>
+                    <span class="fs-4 mx-3 align-middle">{{getAmountOfProductOrder(product.id)}}</span>
+                    <button class="fs-6 btn btn-primary" (click)="incrementOrder(product.id)"><i class="bi bi-plus-lg"></i></button>
+                    <a href="#" (click)="removeOrder(product.id)" class="fs-4 mx-3 align-middle"><i class="bi bi-trash"></i></a>
+                </ng-container>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <a routerLink="/products/0" class="d-flex justify-content-center large-plus"><i class="bi bi-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

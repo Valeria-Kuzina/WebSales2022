@@ -1,0 +1,10 @@
+<div class="container pt-4">
+    <table class="table table-hover table-striped w-50">
+        <tbody>
+            <tr *ngFor="let order of orders" routerLink="/orders/{{order.id}}">
+                <td>{{order.creationTime | date : 'd MMMM yyyy' : undefined : 'ru-ru' }}</td>
+                <td>{{order.creationTime | date : 'HH:mm' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

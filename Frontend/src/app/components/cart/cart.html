@@ -1,0 +1,34 @@
+<div class="container pt-4">
+    <div class="rounded-3 bg-light w-100 py-5 px-1 mt-4 text-center" *ngIf="order && !order.products.length">Текущий заказ пуст</div>
+    <table class="table table-striped" *ngIf="order && order.products.length">
+        <thead>
+            <tr>
+                <th>Товар</th>
+                <th class="text-end">Цена</th>
+                <th class="text-end">Количество</th>
+                <th>&nbsp;</th>
+                <th class="text-end">Стоимость</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of order.products">
+                <td class="align-middle">{{products.get(product.productId)!.name}}</td>
+                <td class="align-middle text-end">{{products.get(product.productId)!.price}}</td>
+                <td class="align-middle text-end">{{product.amount}}</td>
+                <td>
+                    <a class="fs-5 mx-4" href="#" (click)="decrement(product.productId)"><i class="bi bi-dash-square"></i></a>
+                    <a class="fs-5 mx-4" href="#" (click)="increment(product.productId)"><i class="bi bi-plus-square"></i></a>
+                </td>
+                <td class="align-middle text-end">{{products.get(product.productId)!.price * product.amount}}</td>
+                <td>
+                    <a class="fs-5 mx-4" href="#" (click)="remove(product.productId)"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="order && order.products.length" class="text-end fs-3 mt-4">Итого: <span class="fw-bold">{{total}}</span></p>
+    <div class="d-flex justify-content-end mt-4" *ngIf="order && order.products.length">
+        <button class="btn btn-primary" (click)="complete()">Завершить оформление заказа</button>
+    </div>
+</div>

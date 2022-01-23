@@ -1,0 +1,8 @@
+﻿.card {
+    margin: 1rem;
+    width: 18rem;
+}
+
+.large-plus {
+    font-size: calc(6rem + 1.5vw);
+}

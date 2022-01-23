@@ -1,0 +1,18 @@
+﻿<div class="container">
+    <table class="table table-striped m-4">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th class="text-end">Цена</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td class="align-middle">{{product.name}}</td>
+                <td class="align-middle text-end">{{product.price}}</td>
+                <td class="align-middle text-end"><a class="fs-4 edit-link" routerLink="/products/{{product.id}}"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

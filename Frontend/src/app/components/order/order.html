@@ -1,0 +1,24 @@
+<div class="container pt-4">
+    <table class="table" *ngIf="order">
+        <thead>
+            <tr>
+                <th>Товар</th>
+                <th class="text-end">Цена</th>
+                <th class="text-end">Количество</th>
+                <th class="text-end">Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of order.products">
+                <td>{{products.get(product.productId)!.name}}</td>
+                <td class="text-end">{{products.get(product.productId)!.price}}</td>
+                <td class="text-end">{{product.amount}}</td>
+                <td class="text-end">{{products.get(product.productId)!.price * product.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-end fs-3 mt-4">Итого: <span class="fw-bold">{{total}}</span></p>
+    <div class="d-flex justify-content-end mt-4">
+        <button class="btn btn-primary" (click)="print()">Печать</button>
+    </div>
+</div>

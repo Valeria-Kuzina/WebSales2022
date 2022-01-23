@@ -1,0 +1,18 @@
+﻿<div class="modal-header">
+    <h4 class="modal-title">Категория</h4>
+    <button type="button" class="btn-close" (click)="dismiss()"></button>
+</div>
+<div class="modal-body">
+    <div class="mb-3">
+        <label for="category-name" class="form-label" ngbAutofocus>Наименование</label>
+        <input class="form-control" id="category-name" [(ngModel)]="category.name">
+    </div>
+    <div class="mb-3">
+        <label for="category-description" class="form-label" ngbAutofocus>Описание</label>
+        <textarea class="form-control" [(ngModel)]="category.description" id="category-description"></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()">ОК</button>
+    <button type="button" class="btn btn-outline-dark" (click)="dismiss()">Отмена</button>
+</div>

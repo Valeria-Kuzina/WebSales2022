@@ -1,0 +1,28 @@
+﻿<div class="wrapper">
+    <!-- Sidebar -->
+    <nav class="bg-dark sidebar">
+        <div class="sidebar-header">
+            <h4>Категории</h4>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li *ngFor="let category of categories" class="component">
+
+                <a href="javascript:" (click)="setSelectedCategory(category.id)" [title]="category.description">
+                    <span>{{category.name}}</span>
+                    <i class="edit bi bi-pencil-fill" style="float: right;" (click)="openEditCategoryModal(category)"></i>
+                </a>
+
+            </li>
+            <li class="component">
+                <a href="javascript:" (click)="openNewCategoryModal()"><i class="bi bi-plus-lg me-2"></i>Новая категория</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content container">
+        <div class="w-100 bg-light py-5 text-center" *ngIf="!selectedCategoryId">
+            Выберите категорию
+        </div>
+        <product-list *ngIf="selectedCategoryId" [categoryId]="selectedCategoryId"></product-list>
+    </div>
+</div>

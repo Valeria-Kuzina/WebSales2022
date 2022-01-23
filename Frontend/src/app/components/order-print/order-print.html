@@ -1,0 +1,22 @@
+<div class="container pt-4" *ngIf="order">
+    <h3>Заказ от {{order.creationTime | date : 'dd.MM.yyyy HH:mm'}}</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Товар</th>
+                <th class="text-end">Цена</th>
+                <th class="text-end">Количество</th>
+                <th class="text-end">Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of order.products">
+                <td>{{products.get(product.productId)!.name}}</td>
+                <td class="text-end">{{products.get(product.productId)!.price}}</td>
+                <td class="text-end">{{product.amount}}</td>
+                <td class="text-end">{{products.get(product.productId)!.price * product.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-end fs-3 mt-4">Итого: <span class="fw-bold">{{total}}</span></p>
+</div>

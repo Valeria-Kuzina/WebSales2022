@@ -1,0 +1,36 @@
+﻿<div class="container">
+    <h2 class="my-4">Товар</h2>
+    <form>
+        <div class="mb-3">
+            <label class="form-label" for="product-categoryId">Категория</label>
+            <select class="form-select" id="product-categoryId" [(ngModel)]="product.categoryId" name="product-categoryId">
+                <option [ngValue]="category.id" *ngFor="let category of categories">{{category.name}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="product-name">Наименование</label>
+            <input class="form-control" id="product-name" [(ngModel)]="product.name" name="product-name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="product-description">Описание</label>
+            <textarea class="form-control" id="product-description" [(ngModel)]="product.description" name="product-description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="product-price">Цена</label>
+            <input type="number" min="0" class="form-control" id="product-price" [(ngModel)]="product.price" name="product-price">
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" (click)="save()">Сохранить</button>
+        </div>
+    </form>
+</div>
+
+<div class="ngb-toasts">
+    <ngb-toast *ngFor="let toast of toasts"
+               [class]="toast.success ? 'text-success' : 'text-danger'"
+               [autohide]="true"
+               [delay]="5000"
+               (hidden)="removeToast(toast)">
+        {{toast.text}}
+    </ngb-toast>
+</div>

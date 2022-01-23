@@ -1,0 +1,21 @@
+﻿.card {
+    margin: 3rem;
+    width: 18rem;
+}
+
+.large-plus {
+    font-size: calc(6rem + 1.5vw);
+}
+
+tr .edit-link {
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+tr:hover .edit-link {
+    opacity: 0.5;
+}
+
+tr:hover .edit-link:hover {
+    opacity: 1;
+}
